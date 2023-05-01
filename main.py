@@ -52,7 +52,7 @@ def main():
         if today.strftime('%y/%m/%d') == leaveday.strftime('%y/%m/%d'):
             send_Notify(infdb, 'Notifier', 'Holidays-Notifier', 'Info-Happy', f'Today: {holiday[1]}, so Leave..')
             print(f'Today: {holiday[1]}, so Leave..')
-        elif today.strftime('%y/%m/%d') < leaveday.strftime('%y/%m/%d') and (dt.timedelta(days=os.environ['ALERT_WITHIN_DAY'])+today).strftime('%y/%m/%d') > leaveday.strftime('%y/%m/%d'):
+        elif today.strftime('%y/%m/%d') < leaveday.strftime('%y/%m/%d') and (dt.timedelta(days=int(os.environ['ALERT_WITHIN_DAY']))+today).strftime('%y/%m/%d') > leaveday.strftime('%y/%m/%d'):
             send_Notify(infdb, 'Notifier', 'Holidays-Notifier', 'Info-Happy', f'{holiday[0]} on {holiday[1]}, so Alert..')
             print(f'{holiday[0]} on {holiday[1]}, so Alert..')
 
