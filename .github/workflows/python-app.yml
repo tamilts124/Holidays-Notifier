@@ -30,7 +30,7 @@ jobs:
 
     - name: Running a Script
       env:
-        DB_ADMIN_URL: ${{sectets.DB_ADMIN_URL}}
-        ALERT_WITHIN_DAY: ${{sectets.ALERT_WITHIN_DAY}}
+        DB_ADMIN_URL: ${{secrets.DB_ADMIN_URL}}
+        ALERT_WITHIN_DAY: ${{secrets.ALERT_WITHIN_DAY}}
       run: |
         python main.py
