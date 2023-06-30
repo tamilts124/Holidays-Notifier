@@ -5,18 +5,17 @@ from Infinitydatabase import Infinitydatabase
 import urllib3
 urllib3.disable_warnings()
 
-def holidays(*years):
+def holidays(year):
     holidays =[]
-    for year in years:
-        url =f'https://www.tn.gov.in/holiday/{year}'
-        response =requests.get(url, verify=False).text
-        soup =BeautifulSoup(response, 'html.parser')
-        for holiday in soup.findAll('div', {'class': 'holidayarc_res_odd'}):
-            holiday =(
-                holiday.find('div', {'class': 'harc_date'}).text.strip(),
-                holiday.find('div', {'class': 'harc_name'}).text.strip()
-            )
-            holidays.append(holiday)
+    url =f'https://www.tn.gov.in/holiday/{year}'
+    response =requests.get(url, verify=False).text
+    soup =BeautifulSoup(response, 'html.parser')
+    for holiday in soup.findAll('div', {'class': 'holidayarc_res_odd'}):
+        holiday =(
+            holiday.find('div', {'class': 'harc_date'}).text.strip(),
+            holiday.find('div', {'class': 'harc_name'}).text.strip()
+        )
+        holidays.append(holiday)
     return holidays
 
 def getreal_date():
